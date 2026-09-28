@@ -1,0 +1,1495 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modern SaaS website wireframe</title>
+    <style>
+        :root {
+            --ink: #172b4d;
+            --muted: #63748b;
+            --blue: #2868df;
+            --pale: #edf4ff;
+            --line: #dce5f0;
+            --white: #fff;
+            --shadow: 0 16px 45px rgba(22, 55, 103, .09)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: #fff;
+            color: var(--ink);
+            font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+            line-height: 1.6
+        }
+
+        button,
+        a {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        a:hover {
+            color: var(--blue)
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        summary:focus-visible {
+            outline: 3px solid #82aafa;
+            outline-offset: 3px
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 48px));
+            margin: auto
+        }
+
+        .eyebrow {
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            font-size: .75rem;
+            font-weight: 700
+        }
+
+        .section {
+            padding: 100px 0
+        }
+
+        .section-head {
+            max-width: 650px;
+            margin-bottom: 38px
+        }
+
+        .section h2 {
+            font-size: clamp(2rem, 3.2vw, 3rem);
+            line-height: 1.16;
+            letter-spacing: -.04em;
+            margin: 10px 0 16px
+        }
+
+        .section-head p,
+        .lead {
+            color: var(--muted)
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 10px;
+            background: var(--blue);
+            color: white;
+            padding: 13px 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(40, 104, 223, .2)
+        }
+
+        .btn:hover {
+            background: #1954bc;
+            color: #fff
+        }
+
+        .btn.light {
+            background: white;
+            color: var(--blue);
+            box-shadow: none
+        }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: white;
+            color: var(--ink);
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem
+        }
+
+        .icon-btn:hover {
+            border-color: var(--blue);
+            color: var(--blue)
+        }
+
+        header {
+            position: relative;
+            z-index: 10;
+            background: white;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .header-row {
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -.04em
+        }
+
+        .logo-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--blue);
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 19px
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 29px;
+            font-size: .89rem;
+            font-weight: 500
+        }
+
+        .nav-dropdown {
+            position: relative
+        }
+
+        .nav-dropdown>button {
+            background: none;
+            border: 0;
+            color: inherit;
+            padding: 10px 0
+        }
+
+        .dropdown-list {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 184px;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 8px;
+            display: none
+        }
+
+        .nav-dropdown.open .dropdown-list {
+            display: grid
+        }
+
+        .dropdown-list a {
+            padding: 8px 10px;
+            border-radius: 7px
+        }
+
+        .dropdown-list a:hover {
+            background: var(--pale)
+        }
+
+        .menu-toggle {
+            display: none
+        }
+
+        .hero {
+            background: #f6f9ff;
+            overflow: hidden
+        }
+
+        .hero-shell {
+            position: relative;
+            padding: 82px 0 36px
+        }
+
+        .hero-slide {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 58px;
+            min-height: 425px
+        }
+
+        .hero-slide.active {
+            display: grid
+        }
+
+        .hero h1 {
+            font-size: clamp(2.65rem, 5vw, 4.8rem);
+            letter-spacing: -.06em;
+            line-height: 1.08;
+            margin: 15px 0 20px;
+            max-width: 650px
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 540px;
+            font-size: 1.07rem;
+            margin: 0 0 28px
+        }
+
+        .image-placeholder {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #c5d8f4;
+            background: linear-gradient(145deg, #dbe9ff, #f0f6ff);
+            display: grid;
+            place-items: center;
+            color: #5172a0
+        }
+
+        .image-placeholder:before {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border: 1px dashed #a8c3ea;
+            border-radius: inherit
+        }
+
+        .image-placeholder svg {
+            width: 65px;
+            opacity: .54
+        }
+
+        .hero-visual {
+            height: 380px;
+            border-radius: 24px;
+            box-shadow: var(--shadow)
+        }
+
+        .hero-visual:after {
+            content: "HERO IMAGE / PRODUCT PREVIEW";
+            position: absolute;
+            bottom: 30px;
+            font-size: .69rem;
+            letter-spacing: .14em;
+            font-weight: 700
+        }
+
+        .hero-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            padding-top: 24px
+        }
+
+        .arrows {
+            display: flex;
+            gap: 10px
+        }
+
+        .dots {
+            display: flex;
+            gap: 9px
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border: 0;
+            border-radius: 50%;
+            padding: 0;
+            background: #b8cae5
+        }
+
+        .dot.active {
+            width: 28px;
+            border-radius: 10px;
+            background: var(--blue)
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px
+        }
+
+        .feature-card,
+        .detail-card {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            overflow: hidden
+        }
+
+        .feature-image {
+            height: 190px;
+            border: 0;
+            border-bottom: 1px solid var(--line);
+            border-radius: 0
+        }
+
+        .feature-card .copy {
+            padding: 24px
+        }
+
+        .feature-card h3,
+        .detail-card h3 {
+            margin: 0 0 8px;
+            font-size: 1.18rem;
+            letter-spacing: -.02em
+        }
+
+        .feature-card p,
+        .detail-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: .93rem
+        }
+
+        .parallax {
+            position: relative;
+            isolation: isolate;
+            color: white;
+            background: #18468d;
+            padding: 118px 0;
+            overflow: hidden
+        }
+
+        .parallax:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background: linear-gradient(95deg, rgba(13, 40, 88, .92), rgba(21, 77, 159, .7)), repeating-linear-gradient(125deg, #2868df 0 70px, #174a9e 70px 140px);
+            background-attachment: fixed
+        }
+
+        .parallax:after {
+            content: "BACKGROUND IMAGE PLACEHOLDER";
+            position: absolute;
+            bottom: 18px;
+            right: 24px;
+            font-size: .64rem;
+            letter-spacing: .13em;
+            opacity: .5
+        }
+
+        .parallax .inner {
+            max-width: 620px
+        }
+
+        .parallax h2 {
+            font-size: clamp(2.2rem, 4vw, 3.6rem);
+            letter-spacing: -.05em;
+            line-height: 1.13;
+            margin: 13px 0
+        }
+
+        .parallax p {
+            color: #dce9ff;
+            margin-bottom: 26px
+        }
+
+        .details {
+            background: #f8faff
+        }
+
+        .detail-card {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            min-height: 218px
+        }
+
+        .detail-card .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px
+        }
+
+        .plus {
+            flex: none;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 11px;
+            background: var(--pale);
+            color: var(--blue);
+            font-size: 1.55rem;
+            line-height: 1
+        }
+
+        .plus:hover {
+            background: var(--blue);
+            color: #fff
+        }
+
+        .faq-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 70px
+        }
+
+        .faq-list {
+            border-top: 1px solid var(--line)
+        }
+
+        details {
+            border-bottom: 1px solid var(--line);
+            padding: 18px 0
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px
+        }
+
+        summary::-webkit-details-marker {
+            display: none
+        }
+
+        summary:after {
+            content: "+";
+            font-size: 1.4rem;
+            color: var(--blue);
+            font-weight: 400
+        }
+
+        details[open] summary:after {
+            content: "−"
+        }
+
+        details p {
+            color: var(--muted);
+            margin: 12px 30px 0 0
+        }
+
+        .testimonials {
+            background: #f6f9ff
+        }
+
+        .testimonial-frame {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 42px
+        }
+
+        .quote {
+            max-width: 810px;
+            text-align: center;
+            margin: auto
+        }
+
+        .quote blockquote {
+            font-size: clamp(1.4rem, 2.8vw, 2.35rem);
+            letter-spacing: -.035em;
+            line-height: 1.45;
+            margin: 15px 0 24px
+        }
+
+        .quote .person {
+            font-weight: 700
+        }
+
+        .quote .role {
+            font-size: .87rem;
+            color: var(--muted)
+        }
+
+        .quote-slide {
+            display: none
+        }
+
+        .quote-slide.active {
+            display: block
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--line);
+            overflow-x: auto
+        }
+
+        .tab {
+            border: 0;
+            background: none;
+            padding: 14px 18px;
+            white-space: nowrap;
+            color: var(--muted);
+            font-weight: 700;
+            border-bottom: 3px solid transparent
+        }
+
+        .tab[aria-selected="true"] {
+            color: var(--blue);
+            border-color: var(--blue)
+        }
+
+        .tab-panel {
+            display: none;
+            padding: 34px 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center
+        }
+
+        .tab-panel.active {
+            display: grid
+        }
+
+        .tab-panel h3 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            letter-spacing: -.04em;
+            margin: 0 0 14px
+        }
+
+        .tab-panel p {
+            color: var(--muted)
+        }
+
+        .tab-image {
+            height: 270px;
+            border-radius: 17px
+        }
+
+        .footer {
+            background: #132744;
+            color: #e6eefb;
+            padding: 65px 0 25px
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            align-items: start;
+            padding-bottom: 55px
+        }
+
+        .footer .logo-mark {
+            background: #3979f0
+        }
+
+        .footer p {
+            max-width: 320px;
+            color: #aebfd6
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 60px
+        }
+
+        .footer-nav>div {
+            display: grid;
+            gap: 10px
+        }
+
+        .footer-nav strong {
+            color: white;
+            margin-bottom: 7px
+        }
+
+        .footer-nav a,
+        .social a {
+            color: #b9c9dd
+        }
+
+        .footer-nav a:hover,
+        .social a:hover {
+            color: white
+        }
+
+        .social {
+            display: flex;
+            gap: 10px
+        }
+
+        .social a {
+            display: grid;
+            place-items: center;
+            width: 37px;
+            height: 37px;
+            border: 1px solid #49607e;
+            border-radius: 9px;
+            font-size: .8rem;
+            font-weight: 700
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #39516e;
+            padding-top: 22px;
+            color: #aebfd6;
+            font-size: .8rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px
+        }
+
+        .modal {
+            border: 0;
+            border-radius: 18px;
+            padding: 0;
+            width: min(510px, calc(100% - 32px));
+            box-shadow: 0 30px 90px rgba(14, 30, 56, .28)
+        }
+
+        .modal::backdrop {
+            background: rgba(16, 34, 60, .64)
+        }
+
+        .modal-body {
+            padding: 35px
+        }
+
+        .modal-close {
+            float: right;
+            border: 0;
+            background: var(--pale);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 1.25rem
+        }
+
+        .modal h2 {
+            font-size: 1.8rem;
+            letter-spacing: -.04em;
+            margin: 14px 0
+        }
+
+        .modal p {
+            color: var(--muted)
+        }
+
+        .wire-note {
+            font-size: .77rem;
+            color: var(--muted);
+            margin-top: 20px
+        }
+
+        @media(max-width:850px) {
+            .hero-slide {
+                gap: 25px
+            }
+
+            .hero-visual {
+                height: 310px
+            }
+
+            .grid3 {
+                gap: 14px
+            }
+
+            .faq-layout {
+                gap: 30px
+            }
+
+            .footer-nav {
+                gap: 25px
+            }
+        }
+
+        @media(max-width:680px) {
+            .wrap {
+                width: min(100% - 36px, 1160px)
+            }
+
+            .section {
+                padding: 70px 0
+            }
+
+            .header-row {
+                height: 68px
+            }
+
+            .menu-toggle {
+                display: grid
+            }
+
+            .main-nav {
+                display: none;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 68px;
+                background: white;
+                padding: 20px 24px;
+                border-bottom: 1px solid var(--line);
+                box-shadow: var(--shadow);
+                align-items: stretch;
+                flex-direction: column;
+                gap: 8px
+            }
+
+            .main-nav.open {
+                display: flex
+            }
+
+            .dropdown-list {
+                position: static;
+                box-shadow: none;
+                width: 100%
+            }
+
+            .hero-shell {
+                padding: 55px 0 26px
+            }
+
+            .hero-slide.active {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 35px
+            }
+
+            .hero-slide {
+                min-height: 0
+            }
+
+            .hero-visual {
+                height: 240px
+            }
+
+            .grid3,
+            .faq-layout,
+            .tab-panel.active {
+                grid-template-columns: 1fr
+            }
+
+            .faq-layout {
+                gap: 10px
+            }
+
+            .testimonial-frame {
+                gap: 7px
+            }
+
+            .testimonial-frame .icon-btn {
+                flex: none;
+                width: 35px;
+                height: 35px
+            }
+
+            .footer-top,
+            .footer-bottom {
+                flex-direction: column
+            }
+
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 45px
+            }
+
+            .parallax {
+                padding: 90px 0
+            }
+
+            .parallax:before {
+                background-attachment: scroll
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto
+            }
+
+            .parallax:before {
+                background-attachment: scroll
+            }
+        }
+
+        .contact-section {
+            background: #f8fbff;
+            padding: 100px 0;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .contact-left h2 {
+            font-size: 58px;
+            margin: 10px 0 20px;
+            color: #16325c;
+        }
+
+        .contact-left p {
+            color: #6c7a89;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-box {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #edf4ff;
+            color: #2868df;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .info-box h4 {
+            margin: 0;
+            color: #16325c;
+        }
+
+        .info-box span {
+            color: #63748b;
+        }
+
+        /* Form Card */
+
+        .contact-right {
+            background: #fff;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, .08);
+        }
+
+        /* HubSpot Form */
+
+        .contact-right .hs-form-field {
+            margin-bottom: 20px;
+        }
+
+        .contact-right label {
+            font-weight: 600;
+            color: #16325c;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .contact-right input,
+        .contact-right textarea,
+        .contact-right select {
+
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #d8dee8;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: .3s;
+            box-sizing: border-box;
+
+        }
+
+        .contact-right textarea {
+            min-height: 170px;
+        }
+
+        .contact-right input:focus,
+        .contact-right textarea:focus,
+        .contact-right select:focus {
+
+            border-color: #2868df;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(40, 104, 223, .15);
+
+        }
+
+        /* Button */
+
+        .contact-right .hs-button,
+        .contact-right input[type=submit] {
+
+            width: 100%;
+            border: none;
+            background: #2868df;
+            color: #fff;
+            padding: 18px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+
+        }
+
+        .contact-right .hs-button:hover,
+        .contact-right input[type=submit]:hover {
+
+            background: #1954bc;
+            transform: translateY(-2px);
+
+        }
+
+        @media(max-width:900px) {
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-left h2 {
+                font-size: 42px;
+            }
+
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <meta property="og:description" content="">
+    <meta property="og:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:title" content="">
+
+
+
+
+    <style>
+        a.cta_button {
+            -moz-box-sizing: content-box !important;
+            -webkit-box-sizing: content-box !important;
+            box-sizing: content-box !important;
+            vertical-align: middle
+        }
+
+        .hs-breadcrumb-menu {
+            list-style-type: none;
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px
+        }
+
+        .hs-breadcrumb-menu-item {
+            float: left;
+            padding: 10px 0px 10px 10px
+        }
+
+        .hs-breadcrumb-menu-divider:before {
+            content: '›';
+            padding-left: 10px
+        }
+
+        .hs-featured-image-link {
+            border: 0
+        }
+
+        .hs-featured-image {
+            float: right;
+            margin: 0 0 20px 20px;
+            max-width: 50%
+        }
+
+        @media (max-width: 568px) {
+            .hs-featured-image {
+                float: none;
+                margin: 0;
+                width: 100%;
+                max-width: 100%
+            }
+        }
+
+        .hs-screen-reader-text {
+            clip: rect(1px, 1px, 1px, 1px);
+            height: 1px;
+            overflow: hidden;
+            position: absolute !important;
+            width: 1px
+        }
+    </style>
+
+
+
+
+    <link rel="canonical" href="https://244581746.hs-sites-na2.com/7dea362b-3fac-3e00-956a-4952a3d4f474">
+
+
+    <meta property="og:url" content="https://244581746.hs-sites-na2.com/7dea362b-3fac-3e00-956a-4952a3d4f474">
+    <script>var hsVars = { app_hs_base_url: 'https://app-na2.hubspot.com' };</script>
+
+    <meta name="twitter:card" content="summary">
+
+
+
+
+
+
+    <base
+        href="https://244581746.hubspotpreview-na2.com/content-rendering/v1/public/_hcms/preview/template/multi?businessUnitId=0&amp;domain=undefined&amp;hs_preview_key=-OUGlYH7t0I19k7J2_aS4A&amp;portalId=244581746&amp;tc_deviceCategory=undefined&amp;template_file_path=%2Fcompany-project.html&amp;updated=1790497426312&amp;hs-expires=1790501026&amp;hs-signature=AE7aT7zhygZMfCgxgWT5SIkOKbBCA0NY7A&amp;hs_static_app=DesignManagerIde&amp;hs_static_app_version=2.80116"
+        target="_blank">
+    <meta name="generator" content="HubSpot">
+</head>
+
+<body>
+    <header id="home">
+        <div class="wrap header-row"><a href="#home" class="logo" aria-label="Northstar home" target="_self"><span
+                    class="logo-mark">✦</span> northstar<span style="color:#2868df">.</span></a><button
+                class="icon-btn menu-toggle" id="menuToggle" aria-label="Toggle navigation"
+                aria-expanded="false">☰</button>
+            <nav class="main-nav" id="mainNav" aria-label="Main navigation"><a href="#home" target="_self">Home</a><a
+                    href="#about" target="_self">About</a><a href="#services" target="_self">Services</a><a
+                    href="#contact" target="_self">Contact</a>
+                <div class="nav-dropdown" id="resources"><button type="button" id="resourceToggle" aria-expanded="false"
+                        aria-haspopup="true">Resources ▾</button>
+                    <div class="dropdown-list"><a href="#faq" target="_self">Help center</a><a href="#insights"
+                            target="_self">Insights</a><a href="#capabilities" target="_self">Guides</a></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero" aria-label="Hero banner slider">
+            <div class="wrap hero-shell">
+                <div class="hero-slide active">
+                    <div>
+                        <div class="eyebrow">A better way to work</div>
+                        <h1>Make room for your next big idea.</h1>
+                        <p>Bring your work, people, and priorities into one clear view. A flexible starting point for a
+                            modern SaaS experience.</p><a class="btn" href="#services" target="_self">Explore services
+                            <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <div class="image-placeholder hero-visual" role="img"
+                        aria-label="Placeholder for product dashboard image"><svg viewbox="0 0 64 64" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="7" y="10" width="50" height="44" rx="5" />
+                            <circle cx="22" cy="25" r="5" />
+                            <path d="M10 48l15-14 9 8 10-12 11 15" />
+                        </svg></div>
+                </div>
+                <div class="hero-slide">
+                    <div>
+                        <div class="eyebrow">Built for focus</div>
+                        <h1>Keep every project moving forward.</h1>
+                        <p>Give the work that matters a clear home, with space to align priorities and see what comes
+                            next.</p><a class="btn" href="#capabilities" target="_self">See capabilities ↗</a>
+                    </div>
+                    <div class="image-placeholder hero-visual" role="img"
+                        aria-label="Placeholder for project overview image">PROJECT IMAGE</div>
+                </div>
+                <div class="hero-slide">
+                    <div>
+                        <div class="eyebrow">Work together</div>
+                        <h1>Bring your team into the picture.</h1>
+                        <p>Share context, clarify responsibilities, and make collaboration feel more connected.</p><a
+                            class="btn" href="#about" target="_self">Learn more ↗</a>
+                    </div>
+                    <div class="image-placeholder hero-visual" role="img"
+                        aria-label="Placeholder for collaboration image">TEAM IMAGE</div>
+                </div>
+                <div class="hero-slide">
+                    <div>
+                        <div class="eyebrow">See the whole story</div>
+                        <h1>Turn information into direction.</h1>
+                        <p>Put the details in perspective with an organized view of progress and opportunities.</p><a
+                            class="btn" href="#contact" target="_self">Get in touch ↗</a>
+                    </div>
+                    <div class="image-placeholder hero-visual" role="img" aria-label="Placeholder for analytics image">
+                        ANALYTICS IMAGE</div>
+                </div>
+                <div class="hero-controls">
+                    <div class="dots" id="heroDots" aria-label="Choose hero slide"></div>
+                    <div class="arrows"><button class="icon-btn" id="heroPrev"
+                            aria-label="Previous hero slide">←</button><button class="icon-btn" id="heroNext"
+                            aria-label="Next hero slide">→</button></div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="services">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="eyebrow">What you can do</div>
+                    <h2>Everything you need, thoughtfully organized.</h2>
+                    <p>Three distinct places to show your core product or service benefits.</p>
+                </div>
+                <div class="grid3">
+                    <article class="feature-card">
+                        <div class="image-placeholder feature-image" role="img"
+                            aria-label="Placeholder for workspace illustration">IMAGE 01</div>
+                        <div class="copy">
+                            <h3>One clear workspace</h3>
+                            <p>Keep key information together so every next step is easier to find.</p>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <div class="image-placeholder feature-image" role="img"
+                            aria-label="Placeholder for collaboration illustration">IMAGE 02</div>
+                        <div class="copy">
+                            <h3>Connected collaboration</h3>
+                            <p>Make room for shared context and more productive conversations.</p>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <div class="image-placeholder feature-image" role="img"
+                            aria-label="Placeholder for reporting illustration">IMAGE 03</div>
+                        <div class="copy">
+                            <h3>Useful visibility</h3>
+                            <p>See progress at a glance and focus attention where it belongs.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="parallax" id="about" aria-label="Full-width parallax banner">
+            <div class="wrap">
+                <div class="inner">
+                    <div class="eyebrow" style="color:#b5d0ff">Designed to scale</div>
+                    <h2>Build a more connected way of working.</h2>
+                    <p>Give your team an experience shaped around clarity, momentum, and the work ahead.</p><a
+                        class="btn light" href="#contact" target="_self">Start a conversation ↗</a>
+                </div>
+            </div>
+        </section>
+        <section class="section details" id="capabilities">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="eyebrow">Explore more</div>
+                    <h2>The details that make a difference.</h2>
+                    <p>Select a plus icon to preview how an expanded detail popup works.</p>
+                </div>
+                <div class="grid3">
+                    <article class="detail-card">
+                        <div class="top">
+                            <h3>Flexible setup</h3><button class="plus" aria-label="More about flexible setup"
+                                data-modal="0">+</button>
+                        </div>
+                        <p>Configure the experience around your team’s priorities.</p>
+                    </article>
+                    <article class="detail-card">
+                        <div class="top">
+                            <h3>Shared visibility</h3><button class="plus" aria-label="More about shared visibility"
+                                data-modal="1">+</button>
+                        </div>
+                        <p>Give everyone a reliable place to find the latest context.</p>
+                    </article>
+                    <article class="detail-card">
+                        <div class="top">
+                            <h3>Room to grow</h3><button class="plus" aria-label="More about room to grow"
+                                data-modal="2">+</button>
+                        </div>
+                        <p>Start with the essentials and expand as your needs change.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="faq">
+            <div class="wrap faq-layout">
+                <div>
+                    <div class="eyebrow">Frequently asked questions</div>
+                    <h2>Answers, at a glance.</h2>
+                    <p class="lead">An accordion pattern for the questions visitors ask most often.</p>
+                </div>
+                <div class="faq-list">
+                    <details open>
+                        <summary>How do I get started?</summary>
+                        <p>Start with the areas that matter most to your team, then tailor the experience to your
+                            workflow.</p>
+                    </details>
+                    <details>
+                        <summary>Can I adapt the layout for my business?</summary>
+                        <p>Yes. This wireframe is designed as a flexible starting point for your content and components.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Does it work on mobile?</summary>
+                        <p>The sections, navigation, cards, and interactive elements adapt to smaller screens.</p>
+                    </details>
+                    <details>
+                        <summary>Where can I find more information?</summary>
+                        <p>Use the Resources menu or contact section to guide visitors to the details they need.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+        <section class="section testimonials" id="insights">
+            <div class="wrap">
+                <div class="section-head" style="margin-inline:auto;text-align:center">
+                    <div class="eyebrow">Testimonials</div>
+                    <h2>Hear it from your customers.</h2>
+                </div>
+                <div class="testimonial-frame"><button class="icon-btn" id="quotePrev"
+                        aria-label="Previous testimonial">←</button>
+                    <div class="quote" aria-live="polite">
+                        <div class="quote-slide active">
+                            <div class="eyebrow">Testimonial 01 / 03</div>
+                            <blockquote>“Customer quote placeholder: add a verified statement about a specific outcome
+                                here.”</blockquote>
+                            <div class="person">Customer name</div>
+                            <div class="role">Role · Company</div>
+                        </div>
+                        <div class="quote-slide">
+                            <div class="eyebrow">Testimonial 02 / 03</div>
+                            <blockquote>“Customer quote placeholder: add a verified statement about the product
+                                experience here.”</blockquote>
+                            <div class="person">Customer name</div>
+                            <div class="role">Role · Company</div>
+                        </div>
+                        <div class="quote-slide">
+                            <div class="eyebrow">Testimonial 03 / 03</div>
+                            <blockquote>“Customer quote placeholder: add a verified statement about the team experience
+                                here.”</blockquote>
+                            <div class="person">Customer name</div>
+                            <div class="role">Role · Company</div>
+                        </div>
+                    </div><button class="icon-btn" id="quoteNext" aria-label="Next testimonial">→</button>
+                </div>
+                <p class="wire-note" style="text-align:center">Wireframe placeholders: replace with approved customer
+                    quotes before publishing.</p>
+            </div>
+        </section>
+        <section class="section">
+            <div class="wrap">
+                <div class="section-head">
+                    <div class="eyebrow">How it works</div>
+                    <h2>Explore the experience.</h2>
+                    <p>Four tabs with distinct content panels for key stages or product areas.</p>
+                </div>
+                <div class="tabs" role="tablist" aria-label="Experience sections"><button class="tab" role="tab"
+                        aria-selected="true" aria-controls="panel-1" id="tab-1">Overview</button><button class="tab"
+                        role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2"
+                        tabindex="-1">Plan</button><button class="tab" role="tab" aria-selected="false"
+                        aria-controls="panel-3" id="tab-3" tabindex="-1">Collaborate</button><button class="tab"
+                        role="tab" aria-selected="false" aria-controls="panel-4" id="tab-4"
+                        tabindex="-1">Measure</button></div>
+                <div class="tab-panel active" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+                    <div>
+                        <h3>See what matters first.</h3>
+                        <p>A focused overview brings the important pieces of your work into one place.</p>
+                    </div>
+                    <div class="image-placeholder tab-image" role="img" aria-label="Overview image placeholder">OVERVIEW
+                        IMAGE</div>
+                </div>
+                <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2">
+                    <div>
+                        <h3>Put priorities in order.</h3>
+                        <p>Give upcoming work a clear structure and make the next step easier to understand.</p>
+                    </div>
+                    <div class="image-placeholder tab-image" role="img" aria-label="Planning image placeholder">PLAN
+                        IMAGE</div>
+                </div>
+                <div class="tab-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3">
+                    <div>
+                        <h3>Work from shared context.</h3>
+                        <p>Bring discussion and decisions closer to the work they support.</p>
+                    </div>
+                    <div class="image-placeholder tab-image" role="img" aria-label="Collaboration image placeholder">
+                        COLLABORATE IMAGE</div>
+                </div>
+                <div class="tab-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4">
+                    <div>
+                        <h3>Follow your progress.</h3>
+                        <p>Use a clear view of activity to guide the conversations that come next.</p>
+                    </div>
+                    <div class="image-placeholder tab-image" role="img" aria-label="Measurement image placeholder">
+                        MEASURE IMAGE</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="section contact-section" id="contact">
+
+        <div class="wrap contact-wrapper">
+
+            <div class="contact-left">
+
+                <span class="eyebrow">CONTACT</span>
+
+                <h2>Get In Touch</h2>
+
+                <p>
+                    We'd love to hear from you. Fill out the form and our team
+                    will get back to you within 24 hours.
+                </p>
+
+                <div class="contact-info">
+
+                    <div class="info-box">
+                        <div class="icon">✉</div>
+                        <div>
+                            <h4>Email</h4>
+                            <span>hello@company.com</span>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="icon">☎</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <span>+91 9876543210</span>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="icon">📍</div>
+                        <div>
+                            <h4>Location</h4>
+                            <span>Ajmer, Rajasthan</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="contact-right">
+                <div id="hs_cos_wrapper_contact_form"
+                    class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-form" style=""
+                    data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+
+
+
+                    <span id="hs_cos_wrapper_contact_form_"
+                        class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_form" style=""
+                        data-hs-cos-general-type="widget" data-hs-cos-type="form">
+                        <div id="hs_form_target_contact_form">
+                            <form class="hs-form stacked">
+                                <div class="field hs-form-field">
+                                    <label>First Name</label>
+                                    <div class="input">
+                                        <input class="hs-input" type="text">
+                                    </div>
+                                </div>
+                                <div class="field hs-form-field">
+                                    <label>Last Name</label>
+                                    <div class="input">
+                                        <input class="hs-input" type="text">
+                                    </div>
+                                </div>
+                                <div class="field hs-form-field">
+                                    <label>Company</label>
+                                    <div class="input">
+                                        <input class="hs-input" type="text">
+                                    </div>
+                                </div>
+                                <div class="field hs-form-field">
+                                    <label>Email</label>
+                                    <div class="input">
+                                        <input class="hs-input" type="text">
+                                    </div>
+                                </div>
+                                <a class="hs-button large primary" href="#" target="_self">Get Free Widget</a>
+                            </form>
+                        </div>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <footer class="footer" id="contact">
+        <div class="wrap">
+            <div class="footer-top">
+                <div><a href="#home" class="logo" target="_self"><span class="logo-mark">✦</span> northstar.</a>
+                    <p>A modern SaaS website wireframe. Replace sample copy, imagery, links, and branding for your CMS
+                        build.</p>
+                    <div class="social" aria-label="Social links"><a href="https://www.linkedin.com/"
+                            aria-label="LinkedIn">in</a><a href="https://www.instagram.com/"
+                            aria-label="Instagram">◎</a><a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <div><strong>Explore</strong><a href="#home" target="_self">Home</a><a href="#about"
+                            target="_self">About</a><a href="#services" target="_self">Services</a><a href="#contact"
+                            target="_self">Contact</a></div>
+                    <div><strong>Resources</strong><a href="#faq" target="_self">Help center</a><a href="#insights"
+                            target="_self">Insights</a><a href="#capabilities" target="_self">Guides</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span>© 2026 Northstar. Wireframe concept.</span><span>Privacy · Terms</span>
+            </div>
+        </div>
+    </footer>
+    <dialog class="modal" id="detailModal" aria-labelledby="modalTitle">
+        <div class="modal-body"><button class="modal-close" id="modalClose" aria-label="Close popup">×</button>
+            <div class="eyebrow">More details</div>
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p><button class="btn" id="modalDone">Got it</button>
+        </div>
+    </dialog>
+    <script>
+        (() => { function carousel(selector, dotsId, prevId, nextId) { const slides = [...document.querySelectorAll(selector)]; let current = 0; const dots = dotsId ? document.getElementById(dotsId) : null; function show(n) { current = (n + slides.length) % slides.length; slides.forEach((el, i) => { el.classList.toggle('active', i === current); el.setAttribute('aria-hidden', String(i !== current)) }); if (dots) [...dots.children].forEach((el, i) => { el.classList.toggle('active', i === current); el.setAttribute('aria-label', `Show slide ${i + 1} of ${slides.length}`); el.setAttribute('aria-current', String(i === current)) }) } if (dots) slides.forEach((_, i) => { let d = document.createElement('button'); d.className = 'dot'; d.type = 'button'; d.addEventListener('click', () => show(i)); dots.appendChild(d) }); document.getElementById(prevId).addEventListener('click', () => show(current - 1)); document.getElementById(nextId).addEventListener('click', () => show(current + 1)); show(0) } carousel('.hero-slide', 'heroDots', 'heroPrev', 'heroNext'); carousel('.quote-slide', null, 'quotePrev', 'quoteNext'); const dropdown = document.getElementById('resources'), resourceToggle = document.getElementById('resourceToggle'); resourceToggle.addEventListener('click', () => { let open = dropdown.classList.toggle('open'); resourceToggle.setAttribute('aria-expanded', String(open)) }); document.addEventListener('click', e => { if (!dropdown.contains(e.target)) { dropdown.classList.remove('open'); resourceToggle.setAttribute('aria-expanded', 'false') } }); const menu = document.getElementById('mainNav'), menuToggle = document.getElementById('menuToggle'); menuToggle.addEventListener('click', () => { let open = menu.classList.toggle('open'); menuToggle.setAttribute('aria-expanded', String(open)) }); menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false') })); const data = [['Flexible setup', 'Use this popup for implementation details, benefits, or a short product explanation. Replace the sample content with your approved copy.'], ['Shared visibility', 'Show a concise description of the related capability, supporting links, or important information for visitors.'], ['Room to grow', 'Highlight the next level of the offering, the steps involved, or another detail that deserves focused attention.']]; const modal = document.getElementById('detailModal'); document.querySelectorAll('[data-modal]').forEach(b => b.addEventListener('click', () => { const item = data[Number(b.dataset.modal)]; document.getElementById('modalTitle').textContent = item[0]; document.getElementById('modalText').textContent = item[1]; modal.showModal() })); document.getElementById('modalClose').onclick = () => modal.close(); document.getElementById('modalDone').onclick = () => modal.close(); modal.addEventListener('click', e => { if (e.target === modal) modal.close() }); const tabs = [...document.querySelectorAll('[role=tab]')]; function selectTab(i) { tabs.forEach((tab, n) => { let active = n === i; tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; document.getElementById(tab.getAttribute('aria-controls')).classList.toggle('active', active) }); tabs[i].focus() } tabs.forEach((tab, i) => { tab.addEventListener('click', () => selectTab(i)); tab.addEventListener('keydown', e => { if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) { e.preventDefault(); selectTab(e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : e.key === 'ArrowRight' ? (i + 1) % tabs.length : (i - 1 + tabs.length) % tabs.length) } }) }) })();
+    </script>
+
+    <script>
+        var hsVars = hsVars || {}; hsVars['language'] = 'en';
+    </script>
+
+    <script src="https://static.hsappstatic.net/cos-i18n/static-1.53/bundles/project.js"></script>
+
+    <!-- Start of HubSpot Analytics Code Not Loaded -->
+    <script>
+        (function () {
+            const timeoutEvent = document.createEvent('CustomEvent');
+            timeoutEvent.initCustomEvent("content-analytics-code-not-loaded", true, true, { detail: "Not loaded in preview mode" });
+            window.dispatchEvent(timeoutEvent);
+        })();
+    </script>
+    <!-- End of HubSpot Analytics Code Not Loaded -->
+
+
+    <script type="text/javascript">
+        var hsVars = {
+            render_id: "06317562-05a6-48ad-9ade-2c1ea7411063",
+            ticks: 1790497427759,
+            page_id: 1,
+
+            content_group_id: 0,
+            portal_id: 244581746,
+            app_hs_base_url: "https://app-na2.hubspot.com",
+            cp_hs_base_url: "https://cp-na2.hubspot.com",
+            language: "en",
+            analytics_page_type: "landing-page",
+            scp_content_type: "",
+
+            analytics_page_id: "null",
+            category_id: 1,
+            folder_id: 0,
+            is_hubspot_user: false
+        }
+    </script>
+    <script defer src="https://static.hsappstatic.net/HubspotToolsMenu/static-1.640/js/index.js"></script>
+</body>
+
+</html>
